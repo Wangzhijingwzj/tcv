@@ -1,4 +1,6 @@
 exportPattern("^[[:alpha:]]+")
-importFrom(irlba, countsplit, GFM, MASS)
+importFrom(irlba, irlba)
+importFrom(countsplit, countsplit)
+importForm(GFM, gfm)
 import(Rcpp)
 useDynLib(tcv, .registration = TRUE)
