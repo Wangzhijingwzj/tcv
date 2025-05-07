@@ -66,7 +66,7 @@ multiDT <- function(x, K = 5, rmax = 8) {
 
   # Suppress the message from countsplit
   suppressMessages({
-    xsplit <- countsplit(x, folds = K)
+    xsplit <- countsplit::countsplit(x, folds = K)
   })
   obj_mat <- matrix(0, nrow = rmax, ncol = K)
   co_mat <- matrix(0, nrow = rmax, ncol = K)
