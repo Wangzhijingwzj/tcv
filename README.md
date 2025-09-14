@@ -4,19 +4,12 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ## Overview
 
-The `tcv` package provides a robust method for a crucial model selection problem: **choosing the number of factors in Poisson factor models**. This is particularly important for high-dimensional count data, where traditional cross-validation methods often fail. The package's core contribution is the implementation of **Thinning Cross-Validation (TCV)**, a technique specifically designed for count data that preserves the underlying data structure. This makes it a valuable tool for researchers in fields like genomics, text mining, and computational social science.
+The `tcv` package provides a robust method for a crucial model selection problem: **determining the number of factors in Poisson factor models**. This is particularly important for high-dimensional count data, where traditional cross-validation methods can not be used directly. The package's core contribution is the implementation of **Thinning Cross-Validation (TCV)**, a technique specifically designed for count data that preserves the underlying data structure. This makes it a valuable tool for researchers in fields like genomics, text mining, and computational social science.
 
-The package is currently under review and will be available on [CRAN](https://cran.r-project.org/) soon.
+A companion manuscript describing the methodology is currently under peer review. Once accepted, we will update the package documentation with the final citation and DOI.
 
 ## Installation
 
-### From CRAN (stable version - coming soon)
-Once accepted, you will be able to install the package from CRAN:
-```r
-install.packages("tcv")
-# Load the package
-library(tcv)
-```
 
 ### From GitHub (development version)
 You can install the development version of `tcv` from GitHub:
@@ -36,7 +29,6 @@ library(tcv)
 - **Thinning Cross-Validation**: Implements the TCV method for robust and reliable model selection with count data.
 - **Specialized for Poisson Factor Models**: Tailored specifically to determine the latent dimensionality in Poisson factor models.
 - **Automated Factor Selection**: Automates the process of testing a range of factor numbers to find the optimal one.
-- **Robust Implementation**: Uses the `GFM` package for model fitting with a C++ based fallback mechanism for stability.
 
 ## Functions Overview
 
@@ -133,9 +125,13 @@ Please report any bugs or issues on the [GitHub Issues page](https://github.com/
 
 ## References
 
-The data thinning methodology is detailed in:
-- Dharamshi, A. et al. (2025) <doi:10.1080/01621459.2024.2353948>
-- Wang, Z. et al. (2025) <doi:10.1080/01621459.2025.2546577>
+The methodology implemented in the `tcv` package is based on the principles of data thinning for model selection.
+
+  Wang, Z., Xu, P., Zhao, H., & Wang, T. (2025). **Data thinning for Poisson factor models and its applications**. *Journal of the American Statistical Association*, (just-accepted), 1-30.
+
+  Dharamshi, A., Neufeld, A., Motwani, K., Gao, L. L., Witten, D., & Bien, J. (2025). **Generalized data thinning using sufficient statistics**. *Journal of the American Statistical Association*, 120(549), 511-523.
+
+  Neufeld, A., Dharamshi, A., Gao, L. L., & Witten, D. (2024). **Data thinning for convolution-closed distributions**. *Journal of Machine Learning Research*, 25(57), 1-35.
 
 ## License
 
