@@ -1,5 +1,6 @@
 #include <RcppArmadillo.h>
 
+// [[Rcpp::plugins(openmp)]]
 // [[Rcpp::depends(RcppArmadillo)]]
 
 arma::vec prox_func_cpp(const arma::vec &y, double C){
@@ -49,7 +50,9 @@ arma::mat Update_theta_poisson_cpp(const arma::mat &theta0, const arma::mat &res
                                    const arma::mat &A0, double C){
   arma::mat theta1 = theta0.t();
   int N = response.n_rows;
-#pragma omp parallel for
+  #ifdef _OPENMP
+  #pragma omp parallel for
+  #endif
   for(int i=0;i<N;++i){
     double step = 10;
     arma::vec h = grad_neg_loglik_poisson_thetai_cpp(response.row(i).t(), nonmis_ind.row(i).t(), A0, theta0.row(i).t());
@@ -81,11 +84,13 @@ arma::vec grad_neg_loglik_poisson_A_j_cpp(const arma::vec &response_j, const arm
   int N = response_j.n_elem;
   return (theta.t() * (nonmis_ind_j % (arma::exp(tmp) - response_j)) / N) % Q_j;
 }
-arma::mat Update_A_poisson_cpp(const arma::mat &A0, const arma::mat &Q, const arma::mat &response, 
+arma::mat Update_A_poisson_cpp(const arma::mat &A0, const arma::mat &Q, const arma::mat &response,
                                const arma::mat &nonmis_ind, const arma::mat &theta1, double C){
   arma::mat A1 = A0.t();
   int J = A0.n_rows;
-#pragma omp parallel for
+  #ifdef _OPENMP
+  #pragma omp parallel for
+  #endif
   for(int j=0;j<J;++j){
     double step = 10;
     arma::vec h = grad_neg_loglik_poisson_A_j_cpp(response.col(j), nonmis_ind.col(j), A0.row(j).t(), Q.row(j).t(), theta1);
@@ -103,7 +108,7 @@ arma::mat Update_A_poisson_cpp(const arma::mat &A0, const arma::mat &Q, const ar
 }
 //' @export confirm_CJMLE_poisson_cpp
 // [[Rcpp::export]]
-Rcpp::List confirm_CJMLE_poisson_cpp(const arma::mat &response, const arma::mat &nonmis_ind, 
+Rcpp::List confirm_CJMLE_poisson_cpp(const arma::mat &response, const arma::mat &nonmis_ind,
                                      arma::mat theta0, arma::mat A0, const arma::mat &Q,
                                      double C, double tol=1e-4){
   arma::mat theta1 = Update_theta_poisson_cpp(theta0, response, nonmis_ind, A0, C);

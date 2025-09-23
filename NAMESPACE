@@ -1,6 +1,9 @@
-exportPattern("^[[:alpha:]]+")
-importFrom(irlba, irlba)
-importFrom(countsplit, countsplit)
-import(GFM)
-import(Rcpp)
 useDynLib(tcv, .registration = TRUE)
+
+
+export(multiDT)
+export(add_identifiability)
+export(chooseFacNumber_ratio)
+
+
+importFrom(stats, dpois, runif)

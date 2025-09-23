@@ -3,6 +3,6 @@
 
 #' @export confirm_CJMLE_poisson_cpp
 confirm_CJMLE_poisson_cpp <- function(response, nonmis_ind, theta0, A0, Q, C, tol = 1e-4) {
-    .Call('_tcv_confirm_CJMLE_poisson_cpp', PACKAGE = 'tcv', response, nonmis_ind, theta0, A0, Q, C, tol)
+    .Call(`_tcv_confirm_CJMLE_poisson_cpp`, response, nonmis_ind, theta0, A0, Q, C, tol)
 }
 

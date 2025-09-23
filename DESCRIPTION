@@ -1,21 +1,35 @@
 Package: tcv
 Type: Package
-Title: Thinning Cross-Validation for Poisson Factor Models
+Title: Determining the Number of Factors in Poisson Factor Models via Thinning Cross-Validation
 Version: 0.1.0
-Date: 2025-05-06
-Author: Zhijing Wang <wangzhijing916@gmail.com>
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: Provides thinning cross-validation method for determining 
-         the number of factors in Poisson factor models.
-License: GPL-3
-Depends: countsplit, GFM
-Imports: 
-    Rcpp (>= 0.12.17),
-    stats,
-    countsplit,
-    GFM,
-    GPArotation
-LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 7.3.2
+Date: 2025-09-01
+Authors@R: c(person("Zhijing", "Wang", email = "wangzhijing@sjtu.edu.cn", role = c("aut", "cre")), person("Heng", "Peng", email = "hpeng@hkbu.edu.hk", role = "aut"), person("Peirong", "Xu", email = "prxu@sjtu.edu.cn", role = "aut"))
+Description: Implements methods for selecting the number of factors in Poisson
+  factor models, with a primary focus on Thinning Cross-Validation (TCV). The
+  TCV method is based on the 'data thinning' technique, which probabilistically
+  partitions each count observation into training and test sets while preserving
+  the underlying factor structure. The Poisson factor model is then fit on the
+  training set, and model selection is performed by comparing predictive
+  performance on the test set. This toolkit is designed for researchers working
+  with high-dimensional count data in fields such as genomics, text mining, and
+  social sciences. The data thinning methodology is detailed in Dharamshi et al.
+  (2025) <doi:10.1080/01621459.2024.2353948> and Wang et al. (2025)
+  <doi:10.1080/01621459.2025.2546577>.
+License: GPL (>= 3)
 Encoding: UTF-8
-LazyData: true
+Imports:
+    stats,
+    GFM,
+    countsplit,
+    irlba
+LinkingTo:
+    Rcpp,
+    RcppArmadillo
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+SystemRequirements: C++17
+RoxygenNote: 7.3.2
+URL: https://github.com/Wangzhijingwzj/tcv
+BugReports: https://github.com/Wangzhijingwzj/tcv/issues
