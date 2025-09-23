@@ -2,6 +2,9 @@
 
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![CRAN status](https://www.r-pkg.org/badges/version/tcv)](https://CRAN.R-project.org/package=tcv)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/tcv?color=orange)](https://cran.r-project.org/package=tcv)
+
 ## Overview
 
 The `tcv` package provides a robust method for a crucial model selection problem: **determining the number of factors in Poisson factor models**. This is particularly important for high-dimensional count data, where traditional cross-validation methods can not be used directly. The package's core contribution is the implementation of **Thinning Cross-Validation (TCV)**, a technique specifically designed for count data that preserves the underlying data structure. This makes it a valuable tool for researchers in fields like genomics, text mining, and computational social science.
@@ -10,9 +13,21 @@ A companion manuscript describing the methodology is currently under peer review
 
 ## Installation
 
+The package is now available on [CRAN](https://cran.r-project.org/package=tcv) under the name **tcv**.  
+On GitHub, the development version is hosted under the repository name **tcv**.
+
+### From CRAN (stable version)
+
+```r
+install.packages("tcv")
+
+# Load the package
+library(tcv)
+```
 
 ### From GitHub (development version)
-You can install the development version of `tcv` from GitHub:
+
+You can also install the development version of `tcv` from GitHub:
 ```r
 # Install devtools if you haven't already
 # install.packages("devtools")
